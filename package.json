@@ -2,6 +2,7 @@
   "dependencies": {
     "axios": "^1.12.2",
     "body-parser": "^2.2.0",
+    "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.1.0"
   },
@@ -10,7 +11,6 @@
   "version": "1.0.0",
   "description": "**GitHub Repo Finder** helps developers and learners easily discover relevant open-source projects. It simplifies GitHub search by allowing natural queries, filters results by stars, activity, and language, and provides quick summaries so users can find quality repos to learn from or build upon.",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
