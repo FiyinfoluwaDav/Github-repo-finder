@@ -5,11 +5,11 @@ import { log } from "console";
 
 const router = express.Router();
 
-router.get('/',(res,req)=>{
+router.get('/',(req,res)=>{
   res.render("index.ejs");
 });
 
-router.get('/search', async(req,res)=>{
+router.post('/search', async(req,res)=>{
   // const query = req.body.query;
   // const description = req.body.description;
   const {query, description} = req.body;
@@ -22,20 +22,16 @@ router.get('/search', async(req,res)=>{
   const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(searchQuery)}&per_page=10`;
   try{
     const response = await axios.get(url,{
-      header: {
+      headers: {
         'Authorization': `token ${process.env.GITHUB_TOKEN}`
       }
     });
-    const repos = response.data.item;
+    const repos = response.data.items;
     res.render('results', {repos});
   }catch(error){
     console.error(error);
     res.send("Error fetching repositories")    
   }
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port: ${port}`);
 });
 
 export default router;

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Results</h1>
+    <% if (repos && repos.length > 0) { %>
+      <% repos.forEach(repo => { %>
+        <div class="card-item">
+          <h2><a href="<%= repo.html_url %>" target="_blank"><%= repo.full_name %></a></h2>
+          <p><%= repo.description %></p>
+          <p>⭐ Stars: <%= repo.stargazers_count %> | 🍴 Forks: <%= repo.forks_count %></p>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No repositories found. Try a different description.</p>
+    <% } %>
+  </div>
+</body>
+</html>
