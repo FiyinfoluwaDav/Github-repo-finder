@@ -9,7 +9,7 @@
   <div class="container">
     <h1>Results</h1>
     <% if (repos && repos.length > 0) { %>
-      <% repos.forEach(repo => { %>
+      <% repos.forEach((repo, index) => { %>
         <div class="card-item">
           <h2><a href="<%= repo.html_url %>" target="_blank"><%= repo.full_name %></a>
             <button class="summarize-buttom" data-index="<%= index %>">AI Summary</button>
