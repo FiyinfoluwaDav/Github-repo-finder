@@ -11,7 +11,9 @@
     <% if (repos && repos.length > 0) { %>
       <% repos.forEach(repo => { %>
         <div class="card-item">
-          <h2><a href="<%= repo.html_url %>" target="_blank"><%= repo.full_name %></a></h2>
+          <h2><a href="<%= repo.html_url %>" target="_blank"><%= repo.full_name %></a>
+            <button class="summarize-buttom" data-index="<%= index %>">AI Summary</button>
+          </h2>
           <div>
 
           </div>
@@ -20,11 +22,18 @@
           <p>⭐ Stars: <%= repo.stargazers_count %> | 🍴 Forks: <%= repo.forks_count %></p>
           <p> Watching: <%= repo.watchers_count %> | Score: <%= repo.score %></p>
           <p> Language: <%= repo.language %> | Size (KB): <%= repo.size %></p>
+
+          <!--AI Summary container-->
+          <div class="ai-summary" id="summary-<%= index %>"></div>
+
+          <!--Hidden div to store README content-->
+          <textarea class="readme-content" id="readme-<%= index %>" style="display: none"><%= repo.readme %></textarea>
         </div>
       <% }) %>
     <% } else { %>
       <p>No repositories found. Try a different description.</p>
     <% } %>
   </div>
+  <script src="readme.js"></script>
 </body>
 </html>
