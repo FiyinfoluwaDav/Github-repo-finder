@@ -12,7 +12,7 @@
       <% repos.forEach((repo, index) => { %>
         <div class="card-item">
           <h2><a href="<%= repo.html_url %>" target="_blank"><%= repo.full_name %></a>
-            <button class="summarize-buttom" data-index="<%= index %>">AI Summary</button>
+            <button class="summarize-button" data-index="<%= index %>">AI Summary</button>
           </h2>
           <div>
 
@@ -34,6 +34,6 @@
       <p>No repositories found. Try a different description.</p>
     <% } %>
   </div>
-  <script src="readme.js"></script>
+  <script src="/js/readme.js"></script>
 </body>
 </html>

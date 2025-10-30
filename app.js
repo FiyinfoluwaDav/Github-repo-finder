@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import indexRoutes from "./routes/index.js"
+import readmeRoutes from "./routes/readme.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 //Routes
 app.use('/',indexRoutes);
+app.use('/api', readmeRoutes);
 
 app.listen(port, ()=>{
     console.log(`Server listening on port: ${port}`);

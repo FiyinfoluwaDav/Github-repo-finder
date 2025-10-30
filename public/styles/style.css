@@ -95,3 +95,45 @@ h1 {
     grid-gap: 10px;
   }
 }
+
+.ai-summary {
+  position: relative;
+}
+
+.summary-card {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 10;
+  width: 300px;
+  background: #111;
+  color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  font-size: 0.95em;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.summary-card.error {
+  background: #ff4444;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.summarize-button {
+  background: #0078ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.summarize-button:hover {
+  background: #005ecc;
+}
