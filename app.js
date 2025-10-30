@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 const port = 3000;
-
+  
 //Middleware
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
