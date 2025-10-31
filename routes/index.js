@@ -1,7 +1,5 @@
 import express from "express";
-import bodyParser from "body-parser";
 import axios from "axios";
-import { log } from "console";
 
 const router = express.Router();
 
