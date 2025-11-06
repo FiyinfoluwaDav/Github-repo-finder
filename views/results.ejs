@@ -1,39 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Search Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/style.css">
+  <title>Search Results</title>
 </head>
+
 <body>
-  <div class="container">
+  <div id="bg"></div>
+  <div class="container results-container">
     <h1>Results</h1>
     <% if (repos && repos.length > 0) { %>
-      <% repos.forEach((repo, index) => { %>
-        <div class="card-item">
-          <h2><a href="<%= repo.html_url %>" target="_blank"><%= repo.full_name %></a>
-            <button class="summarize-button" data-index="<%= index %>">AI Summary</button>
-          </h2>
-          <div>
+      <div class="results-grid">
+        <% repos.forEach((repo, index) => { %>
+          <div class="card-item result-card">
+            <div class="card-header">
+              <h2><a href="<%= repo.html_url %>" target="_blank"><%= repo.full_name %></a></h2>
+              <button class="summarize-button" data-index="<%= index %>">AI Summary</button>
+            </div>
+            <p class="repo-description"><%= repo.description %></p>
+            <div class="repo-stats">
+              <span>⭐ <%= repo.stargazers_count %></span>
+              <span>🍴 <%= repo.forks_count %></span>
+              <span>👀 <%= repo.watchers_count %></span>
+            </div>
+            <div class="repo-info">
+              <span><%= repo.language %></span>
+              <span><%= repo.size %> KB</span>
+            </div>
+            <div class="owner-info">
+              <img src="<%= repo.owner.avatar_url %>" alt="Owner Avatar">
+              <a href="<%= repo.owner.html_url %>" target="_blank"><%= repo.owner.login %></a>
+            </div>
+            <!--AI Summary container-->
+            <div class="ai-summary" id="summary-<%= index %>"></div>
 
+            <!--Hidden div to store README content-->
+            <textarea class="readme-content" id="readme-<%= index %>" style="display: none"><%= repo.readme %></textarea>
           </div>
-          <p><%= repo.description %></p>
-          <img src="<%= repo.owner.avatar_url %>" alt="Owner Avatar" height="40px" width="40px" />
-          <p>⭐ Stars: <%= repo.stargazers_count %> | 🍴 Forks: <%= repo.forks_count %></p>
-          <p> Watching: <%= repo.watchers_count %> | Score: <%= repo.score %></p>
-          <p> Language: <%= repo.language %> | Size (KB): <%= repo.size %></p>
-
-          <!--AI Summary container-->
-          <div class="ai-summary" id="summary-<%= index %>"></div>
-
-          <!--Hidden div to store README content-->
-          <textarea class="readme-content" id="readme-<%= index %>" style="display: none"><%= repo.readme %></textarea>
-        </div>
-      <% }) %>
+        <% }) %>
+      </div>
     <% } else { %>
       <p>No repositories found. Try a different description.</p>
     <% } %>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
   <script src="/js/readme.js"></script>
+
+  <script>
+    VANTA.FOG({
+      el: "#bg",
+      mouseControls: true,
+      touchControls: true,
+      highlightColor: 0x222222,
+      midtoneColor: 0x333333,
+      lowlightColor: 0x111111,
+      baseColor: 0x0f0f0f,
+      blurFactor: 0.7,
+      speed: 1.5
+    })
+  </script>
 </body>
+
 </html>

@@ -4,16 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/style.css">
   <title>GitHub Repo Finder</title>
 </head>
 
 <body>
+  <div id="bg"></div>
   <div class="container">
     <h1 id="hero-text">Let's find an open source project for you</h1>
 
     <form action="/search" id="form" class="form" method="POST">
-        <label for="query">What open-source project are you lookin for?</label>
+        <label for="query">What open-source project are you looking for?</label>
         <input type="text" id="query" name="query" required>
 
         <label for="description">Describe it:</label>
@@ -52,18 +56,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
 
-  <div id="bg"></div>
+
 
   <script>
   VANTA.FOG({
     el: "#bg",
     mouseControls: true,
     touchControls: true,
-    highlightColor: 0xffffff,
-    midtoneColor: 0x888888,
-    lowlightColor: 0x000000,
-    baseColor: 0x000000,
-    blurFactor: 0.5
+    highlightColor: 0x222222,
+    midtoneColor: 0x333333,
+    lowlightColor: 0x111111,
+    baseColor: 0x0f0f0f,
+    blurFactor: 0.7,
+    speed: 1.5
   })
   </script>
 

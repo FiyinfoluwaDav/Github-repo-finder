@@ -11,46 +11,85 @@ html {
 }
 /* ------------ */
 body {
-  font-family: monospace;
+  font-family: "Inter", sans-serif;
   height: 100%;
+  background-color: #0f0f0f;
+  color: #fff;
 }
 h1 {
   width: 100%;
   margin-bottom: 40px;
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
 }
 /* ------------ */
 .container {
-  height: 100%;
   width: 100%;
-  max-width: 570px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 60px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
+
+.results-container {
+  padding-top: 0;
+}
+
 /* ------------ */
 .form {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 80px;
-  grid-column-gap: 10px;
+  max-width: 570px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
+
 .form-submit {
   outline: none;
-  border: 1px solid rgb(232, 232, 232);
-  background-color: white;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+  color: #fff;
   border-radius: 5px;
   cursor: pointer;
-  font-family: monospace;
-  font-size: 14px;
-  line-height: 36px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 48px;
+  transition: background-color 0.2s ease-in-out;
 }
+
+.form-submit:hover {
+  background-color: #2a2a2a;
+}
+
 .form-submit:focus {
-  box-shadow: 0 0 0 0.5px rgb(153, 153, 153);
+  box-shadow: 0 0 0 2px #555;
 }
+
+input[type="text"],
+textarea {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 12px;
+  border-radius: 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #555;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: -10px;
+}
+
 .cards {
   display: flex;
   margin: 20px 0;
@@ -58,23 +97,108 @@ h1 {
 }
 .card-item {
   width: 100%;
-  padding: 5px 20px 20px;
-  border: 1px solid rgb(232, 232, 232);
-  background-color: white;
+  padding: 20px;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
   border-radius: 5px;
 }
-.card-info {
-  margin-top: 40px;
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.card-header h2 a:hover {
+  text-decoration: underline;
+}
+
+.summarize-button {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.summarize-button:hover {
+  background-color: #3a3a3a;
+}
+
+.repo-description {
+  color: #aaa;
+}
+
+.repo-stats {
+  display: flex;
+  gap: 15px;
+  color: #aaa;
+}
+
+.repo-info {
+  display: flex;
+  gap: 15px;
+  color: #aaa;
+}
+
+.owner-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.owner-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.owner-info a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.owner-info a:hover {
+  text-decoration: underline;
+}
+
+.card-info {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .card-activity {
-  line-height: 1.2;
+  line-height: 1.4;
   margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 .tag-error {
   width: 100%;
   text-align: center;
+  color: #ff4444;
 }
 /* ------------ */
 .is-element-hidden {
@@ -86,54 +210,22 @@ h1 {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 40px 20px;
   }
-  .form {
-    width: 100%;
-    display: grid;
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .results-grid {
     grid-template-columns: 1fr;
-    grid-gap: 10px;
   }
 }
 
-.ai-summary {
-  position: relative;
-}
-
-.summary-card {
-  position: absolute;
-  top: 10px;
+#bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
   left: 0;
-  z-index: 10;
-  width: 300px;
-  background: #111;
-  color: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  font-size: 0.95em;
-  animation: fadeIn 0.2s ease-in-out;
-}
-
-.summary-card.error {
-  background: #ff4444;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.summarize-button {
-  background: #0078ff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.summarize-button:hover {
-  background: #005ecc;
+  z-index: -1;
 }
