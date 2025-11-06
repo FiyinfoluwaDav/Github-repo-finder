@@ -10,7 +10,7 @@
 
 <body>
   <div class="container">
-    <h1>Let's find an open source project for you</h1>
+    <h1 id="hero-text">Let's find an open source project for you</h1>
 
     <form action="/search" id="form" class="form" method="POST">
         <label for="query">What open-source project are you lookin for?</label>
@@ -49,6 +49,23 @@
             <%}%>
     </section>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
+
+  <div id="bg"></div>
+
+  <script>
+  VANTA.FOG({
+    el: "#bg",
+    mouseControls: true,
+    touchControls: true,
+    highlightColor: 0xffffff,
+    midtoneColor: 0x888888,
+    lowlightColor: 0x000000,
+    baseColor: 0x000000,
+    blurFactor: 0.5
+  })
+  </script>
 
 </body>
 

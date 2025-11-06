@@ -12,6 +12,7 @@ router.post('/search', async(req,res)=>{
   // const description = req.body.description;
   const {query, description} = req.body;
 
+  // TODO: Use AI to enhance search query
   // const searchQuery = query + " " + description ...This is the older way
   const searchQuery = `${query} ${description}`;
 
