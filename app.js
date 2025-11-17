@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.json()); 
 
-//Routes
+//Routes`
 app.use('/',indexRoutes);
 app.use('/api', readmeRoutes);
 
