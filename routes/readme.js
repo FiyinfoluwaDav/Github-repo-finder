@@ -2,6 +2,22 @@ import express from "express";
 import axios from "axios";
 const router = express.Router();
 
+router.get("/readme/:owner/:repo", async (req, res) => {
+  const { owner, repo } = req.params;
+  try {
+    const readmeUrl = `https://api.github.com/repos/${owner}/${repo}/readme`;
+    const readmeResponse = await axios.get(readmeUrl, {
+      headers: {
+        'Authorization': `token ${process.env.GITHUB_TOKEN}`,
+        'Accept': 'application/vnd.github.v3.raw'
+      }
+    });
+    res.send(readmeResponse.data);
+  } catch (error) {
+    res.status(404).send("README not found.");
+  }
+});
+
 router.post("/summarize", async (req, res) => {
   const { readme } = req.body;
 

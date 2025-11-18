@@ -219,6 +219,16 @@ label {
   text-align: center;
   color: #ff4444;
 }
+
+.ai-summary {
+  word-wrap: break-word;
+  margin-top: 10px;
+  color: #ccc;
+  background-color: #2a2a2a;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 /* ------------ */
 .is-element-hidden {
   display: none;

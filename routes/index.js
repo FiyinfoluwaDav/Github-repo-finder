@@ -26,25 +26,6 @@ router.post('/search', async(req,res)=>{
     });
     const repos = response.data.items;
 
-    // Fetch README for each repository
-    // WARNING: This can be slow due to multiple API calls.
-    // A more efficient approach for production would be to fetch READMEs on demand (e.g., when the AI Summary button is clicked).
-    for (let repo of repos) {
-      try {
-        const readmeUrl = `https://api.github.com/repos/${repo.owner.login}/${repo.name}/readme`;
-        const readmeResponse = await axios.get(readmeUrl, {
-          headers: {
-            'Authorization': `token ${process.env.GITHUB_TOKEN}`,
-            'Accept': 'application/vnd.github.v3.raw' // Request raw content
-          }
-        });
-        repo.readme = readmeResponse.data; // README content
-      } catch (readmeError) {
-        // If README not found, set to empty string or a message
-        repo.readme = "No README found for this repository.";
-        console.error(`Error fetching README for ${repo.full_name}:`, readmeError.message);
-      }
-    }
     res.render('results', {repos});
   }catch(error){
     console.error(error);

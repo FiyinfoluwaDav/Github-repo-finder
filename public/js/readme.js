@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", async (event) => {
       event.stopPropagation(); // prevent immediate close
       const index = button.dataset.index;
-      const readme = document.getElementById(`readme-${index}`).innerHTML;
+      const owner = button.dataset.owner;
+      const repo = button.dataset.repo;
       const summaryDiv = document.getElementById(`summary-${index}`);
 
       // Close any previously open card
@@ -27,13 +28,21 @@ document.addEventListener("DOMContentLoaded", () => {
       activeCard = summaryDiv;
 
       try {
-        const response = await fetch("/api/summarize", {
+        // First, fetch the README content
+        const readmeResponse = await fetch(`/api/readme/${owner}/${repo}`);
+        if (!readmeResponse.ok) {
+          throw new Error('README not found.');
+        }
+        const readme = await readmeResponse.text();
+
+        // Now, summarize the README
+        const summaryResponse = await fetch("/api/summarize", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ readme })
         });
 
-        const data = await response.json();
+        const data = await summaryResponse.json();
         summaryDiv.innerHTML = `
           <div class="summary-card">
             <pre><code>${data.summary || "⚠️ No summary returned."}</code></pre>
