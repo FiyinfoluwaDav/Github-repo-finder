@@ -229,6 +229,11 @@ label {
   border-radius: 5px;
 }
 
+.ai-summary pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 /* ------------ */
 .is-element-hidden {
   display: none;
