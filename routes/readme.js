@@ -13,7 +13,7 @@ router.post("/summarize", async (req, res) => {
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
     {
         contents: [
-        { parts: [{ text: `Summarize this repository README in 2–3 sentences:\n\n${truncatedReadme}` }] }
+        { parts: [{ text: `Your task is to provide a concise summary (2-3 sentences) of the following repository's README. The README might contain a lot of code. Do not return the code itself. Instead, describe the code's purpose and what the repository does. Here is the README content:\n\n${truncatedReadme}` }] }
         ],
     },
     {

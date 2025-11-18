@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", async (event) => {
       event.stopPropagation(); // prevent immediate close
       const index = button.dataset.index;
-      const readme = document.getElementById(`readme-${index}`).value;
+      const readme = document.getElementById(`readme-${index}`).innerHTML;
       const summaryDiv = document.getElementById(`summary-${index}`);
 
       // Close any previously open card
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await response.json();
         summaryDiv.innerHTML = `
           <div class="summary-card">
-            <p>${data.summary || "⚠️ No summary returned."}</p>
+            <pre><code>${data.summary || "⚠️ No summary returned."}</code></pre>
           </div>
         `;
       } catch (err) {

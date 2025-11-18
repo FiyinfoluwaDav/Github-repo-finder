@@ -41,7 +41,7 @@
             <div class="ai-summary" id="summary-<%= index %>"></div>
 
             <!--Hidden div to store README content-->
-            <textarea class="readme-content" id="readme-<%= index %>" style="display: none"><%= repo.readme %></textarea>
+            <div class="readme-content" id="readme-<%= index %>" style="display: none"><%- repo.readme %></div>
           </div>
         <% }) %>
       </div>
