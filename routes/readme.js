@@ -22,7 +22,7 @@ router.post("/summarize", async (req, res) => {
   const { readme } = req.body;
 
   try {
-    const truncatedReadme = readme.slice(0, 5000);
+    const truncatedReadme = readme.slice(0, 3000);
 
     // Call Gemini API (use correct endpoint + model)
     const response = await axios.post(
