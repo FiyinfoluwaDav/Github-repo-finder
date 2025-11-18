@@ -132,6 +132,12 @@ label {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .card-header {
