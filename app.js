@@ -11,9 +11,9 @@ const port = 3000;
   
 //Middleware
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.set('view engine', 'ejs');
-app.use(express.json()); 
+app.use(express.json({ limit: '50mb' })); 
 
 //Routes`
 app.use('/',indexRoutes);

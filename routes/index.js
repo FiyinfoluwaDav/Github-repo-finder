@@ -17,7 +17,7 @@ router.post('/search', async(req,res)=>{
   const searchQuery = `${query} ${description} in:readme,description`;
 
   //GitHub API Call
-  const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(searchQuery)}&per_page=10`;
+  const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(searchQuery)}&per_page=10&sort=best-match`;
   try{
     const response = await axios.get(url,{
       headers: {
