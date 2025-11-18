@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       summaryDiv.style.display = "block";
-      summaryDiv.innerHTML = "⏳ Summarizing...";
+      summaryDiv.innerHTML = '<div class="loader"></div>';
       activeCard = summaryDiv;
 
       try {
