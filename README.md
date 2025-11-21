@@ -3,3 +3,9 @@
 Upcoming features will allow users to copy the code required to clone,and run the project with a single click of a button... Stay tuned!
 
 This project is still under construction...
+
+I will be unavailable to make further commits until the 10th of December as a result of the NYSC orientation camp (21 days)
+
+Day 1✅🇺🇾🇳🇬
+Day 2✅🇺🇾🇳🇬
+Day 3✅🇺🇾🇳🇬
