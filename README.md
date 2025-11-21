@@ -6,6 +6,6 @@ This project is still under construction...
 
 I will be unavailable to make further commits until the 10th of December as a result of the NYSC orientation camp (21 days)
 
-Day 1✅🇺🇾🇳🇬
-Day 2✅🇺🇾🇳🇬
-Day 3✅🇺🇾🇳🇬
+Day 1✅🇳🇬
+Day 2✅🇳🇬
+Day 3✅🇳🇬
