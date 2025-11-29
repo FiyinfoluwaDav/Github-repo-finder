@@ -4,41 +4,63 @@
 
 ## Deployment
 
-This project can be deployed to [Vercel](https://vercel.com) for free. Here are the steps:
+The project is deployed on Vercel and can be accessed here: [https://github-repo-finder-rho.vercel.app/](https://github-repo-finder-rho.vercel.app/)
 
-### 1. Prepare your Project for Deployment
+## Demo
 
-Your project is now well-configured for deployment. The `app.js` file has been updated to explicitly set the paths for the `views` and `public` directories, which is necessary for Vercel's environment. The `package.json` file also has a `start` script (`"start": "node app.js"`), which Vercel will use to run your application.
+### Search Query
+![Search Query](./demo/search%20query.png)
 
-### 2. Push your Project to a GitHub Repository
+### Result
+![Result](./demo/result.png)
 
-Vercel works by connecting to your GitHub account and deploying your repositories. Make sure all your latest changes are pushed to a GitHub repository.
+## Features
 
-### 3. Sign up for Vercel
+*   **Natural Language Search:** Search for repositories using natural language queries.
+*   **Filter Results:** Filter repositories by stars, recent activity, and programming language.
+*   **Quick Summaries:** Get quick summaries of repositories to easily find what you're looking for.
 
-*   Go to [vercel.com](https://vercel.com) and sign up for a new account. You can use your GitHub account to sign up, which makes the process easier.
+## Getting Started
 
-### 4. Create a New Project on Vercel
+### Prerequisites
 
-*   Once you're logged in to your Vercel dashboard, click on the "**Add New...**" button and select "**Project**".
-*   Vercel will ask you to import a Git repository. Find your `Github-repo-finder` repository and click the "**Import**" button.
+*   Node.js
+*   npm
 
-### 5. Configure your Project
+### Installation
 
-*   Vercel should automatically detect that this is a Node.js project. You shouldn't need to change anything in the "Build and Output Settings".
-*   **Environment Variables:** This is the most important step. Your application needs the `GITHUB_TOKEN` and `GEMINI_API_KEY` to work. You need to add these as environment variables in your Vercel project settings.
-    *   Go to the "**Settings**" tab of your project on Vercel.
-    *   Click on "**Environment Variables**".
-    *   Add two variables:
-        *   `GITHUB_TOKEN` with the value of your GitHub token.
-        *   `GEMINI_API_KEY` with the value of your Gemini API key.
+1.  Clone the repository:
+    ```sh
+    git clone https://github.com/FiyinfoluwaDav/Github-repo-finder.git
+    ```
+2.  Install the dependencies:
+    ```sh
+    npm install
+    ```
+3.  Create a `.env` file in the root directory and add your GitHub personal access token:
+    ```
+    GITHUB_TOKEN=your_token
+    ```
 
-### 6. Deploy
+### Running the Application
 
-*   After configuring the environment variables, go to the "**Deployments**" tab and click the "**Deploy**" button on the latest commit.
-*   Vercel will start the deployment process. You can see the logs in real-time.
-*   Once the deployment is complete, Vercel will give you a URL where your application is live (e.g., `your-project-name.vercel.app`).
+```sh
+npm start
+```
 
-## Yes, you can deploy this for free!
+The application will be available at `http://localhost:3000`.
 
-Vercel's free "Hobby" plan is perfect for this type of project. It's designed for personal, non-commercial projects and includes free hosting for Node.js applications like this one. Vercel cleverly runs your Express application as a Serverless Function, which fits within their free tier limits. For an application like this that fetches data from APIs, the execution time and usage limits of the free plan are more than enough.
+## Future Features
+
+*   **Folder Structure:** View the folder structure of a repository.
+*   **Sort by Stars:** Sort repositories by the number of stars.
+*   **Advanced Search:** Implement advanced search filters, such as filtering by license and number of forks.
+*   **User Authentication:** Allow users to log in with their GitHub account to save their favorite repositories.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue.
+
+## License
+
+This project is licensed under the ISC License.
