@@ -150,6 +150,12 @@ label {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
+}
+
+.card-header h2 {
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .card-header h2 a {
@@ -157,6 +163,10 @@ label {
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 }
 
 .card-header h2 a:hover {

@@ -3,9 +3,12 @@ import axios from "axios";
 
 const router = express.Router();
 
-async function generateSearchQuery(query, description) {
+async function generateKeywords(description) {
+  if (!description) {
+    return "";
+  }
   try {
-    const prompt = `You are a GitHub search expert. Your task is to generate a GitHub search query that finds repositories based on a user's request. The user is looking for: '${query}' and has provided the following description: '${description}'. Generate a search query that is optimized to find the most relevant repositories. The query should search in the readme and description. Return only the search query.`;
+    const prompt = `You are a keyword extraction expert. Your task is to extract the most relevant keywords from the following description. Return the keywords as a comma-separated list. Description: '${description}'`;
 
     const response = await axios.post(
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
@@ -20,12 +23,11 @@ async function generateSearchQuery(query, description) {
       }
     );
 
-    const generatedQuery = response.data.candidates[0].content.parts[0].text;
-    return generatedQuery.trim();
+    const generatedKeywords = response.data.candidates[0].content.parts[0].text;
+    return generatedKeywords.trim();
   } catch (error) {
-    console.error("Error generating search query:", error.response?.data || error.message);
-    // Fallback to the simple query
-    return `${query} ${description} in:readme,description`;
+    console.error("Error generating keywords:", error.response?.data || error.message);
+    return "";
   }
 }
 
@@ -36,11 +38,11 @@ router.get('/',(req,res)=>{
 router.get('/search', async (req, res) => {
   const { query, description, page = 1 } = req.query;
 
-  // Use AI to enhance search query
-  const searchQuery = await generateSearchQuery(query, description);
+  const keywords = await generateKeywords(description);
 
-  // GitHub API Call
-  const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(searchQuery)}&per_page=10&sort=best-match&page=${page}`;
+  const finalQuery = `${query} in:name,description ${keywords ? keywords + " in:readme" : ""}`;
+
+  const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(finalQuery)}&per_page=10&sort=stars&order=desc&page=${page}`;
   try {
     const response = await axios.get(url, {
       headers: {
@@ -63,6 +65,5 @@ router.get('/search', async (req, res) => {
     res.send("Error fetching repositories");
   }
 });
-
 
 export default router;
