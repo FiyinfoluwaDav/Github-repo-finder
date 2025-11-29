@@ -21,7 +21,10 @@
           <div class="card-item result-card">
             <div class="card-header">
               <h2><a href="<%= repo.html_url %>" target="_blank"><%= repo.full_name %></a></h2>
-              <button class="summarize-button" data-owner="<%= repo.owner.login %>" data-repo="<%= repo.name %>" data-index="<%= index %>">AI Summary</button>
+              <div class="card-buttons">
+                <button class="summarize-button" data-owner="<%= repo.owner.login %>" data-repo="<%= repo.name %>" data-index="<%= index %>">AI Summary</button>
+                <button class="clone-button" data-clone-url="<%= repo.clone_url %>">Clone Repo</button>
+              </div>
             </div>
             <p class="repo-description"><%= repo.description %></p>
             <div class="repo-stats">
@@ -67,6 +70,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
   <script src="/js/readme.js"></script>
+  <script src="/js/clone.js"></script>
 
   <script>
     VANTA.FOG({

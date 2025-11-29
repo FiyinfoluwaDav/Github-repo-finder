@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Close any previously open card
       if (activeCard && activeCard !== summaryDiv) {
         activeCard.style.display = "none";
-      }
+      } 
 
       // Toggle visibility
       if (summaryDiv.style.display === "block") {

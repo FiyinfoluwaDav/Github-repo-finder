@@ -58,6 +58,7 @@ h1 {
   max-width: 570px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   gap: 10px;
   border: 1px solid #333;
   border-radius: 5px;
@@ -73,7 +74,7 @@ h1 {
   cursor: pointer;
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  padding: 0 20px;
+  padding: 10px 20px;
   transition: background-color 0.2s ease-in-out;
 }
 
@@ -95,6 +96,11 @@ textarea {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   width: 100%;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
 input[type="text"]:focus,
@@ -157,7 +163,13 @@ label {
   text-decoration: underline;
 }
 
-.summarize-button {
+.card-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.summarize-button,
+.clone-button {
   background-color: #2a2a2a;
   border: 1px solid #444;
   color: #fff;
@@ -167,7 +179,8 @@ label {
   font-size: 14px;
 }
 
-.summarize-button:hover {
+.summarize-button:hover,
+.clone-button:hover {
   background-color: #3a3a3a;
 }
 
@@ -285,4 +298,29 @@ label {
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.pagination a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.pagination a:hover {
+  background-color: #2a2a2a;
+}
+
+.pagination a.active {
+  background-color: #1a1a1a;
+  border-color: #555;
 }
