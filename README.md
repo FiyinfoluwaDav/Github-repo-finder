@@ -8,7 +8,7 @@ This project can be deployed to [Vercel](https://vercel.com) for free. Here are 
 
 ### 1. Prepare your Project for Deployment
 
-Your project is already well-configured for deployment. The `package.json` file has a `start` script (`"start": "node app.js"`), which is what Vercel will use to run your application. A `vercel.json` file is also included to ensure that Vercel handles your project correctly.
+Your project is now well-configured for deployment. The `app.js` file has been updated to explicitly set the paths for the `views` and `public` directories, which is necessary for Vercel's environment. The `package.json` file also has a `start` script (`"start": "node app.js"`), which Vercel will use to run your application.
 
 ### 2. Push your Project to a GitHub Repository
 
@@ -25,7 +25,7 @@ Vercel works by connecting to your GitHub account and deploying your repositorie
 
 ### 5. Configure your Project
 
-*   Vercel will use the `vercel.json` file to configure the project, so you shouldn't need to change anything in the "Build and Output Settings".
+*   Vercel should automatically detect that this is a Node.js project. You shouldn't need to change anything in the "Build and Output Settings".
 *   **Environment Variables:** This is the most important step. Your application needs the `GITHUB_TOKEN` and `GEMINI_API_KEY` to work. You need to add these as environment variables in your Vercel project settings.
     *   Go to the "**Settings**" tab of your project on Vercel.
     *   Click on "**Environment Variables**".
