@@ -33,26 +33,34 @@ router.get('/',(req,res)=>{
   res.render("index.ejs");
 });
 
-router.post('/search', async(req,res)=>{
-  const {query, description} = req.body;
+router.get('/search', async (req, res) => {
+  const { query, description, page = 1 } = req.query;
 
   // Use AI to enhance search query
   const searchQuery = await generateSearchQuery(query, description);
 
-  //GitHub API Call
-  const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(searchQuery)}&per_page=10&sort=best-match`;
-  try{
-    const response = await axios.get(url,{
+  // GitHub API Call
+  const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(searchQuery)}&per_page=10&sort=best-match&page=${page}`;
+  try {
+    const response = await axios.get(url, {
       headers: {
         'Authorization': `token ${process.env.GITHUB_TOKEN}`
       }
     });
     const repos = response.data.items;
+    const totalCount = response.data.total_count;
+    const totalPages = Math.ceil(totalCount / 10);
 
-    res.render('results', {repos});
-  }catch(error){
+    res.render('results', {
+      repos,
+      currentPage: parseInt(page),
+      totalPages,
+      query,
+      description
+    });
+  } catch (error) {
     console.error(error);
-    res.send("Error fetching repositories")    
+    res.send("Error fetching repositories");
   }
 });
 

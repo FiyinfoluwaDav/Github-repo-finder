@@ -42,6 +42,24 @@
           </div>
         <% }) %>
       </div>
+      <div class="pagination">
+        <% if (currentPage > 1) { %>
+          <a href="/search?query=<%= query %>&description=<%= description %>&page=<%= currentPage - 1 %>">Previous</a>
+        <% } %>
+    
+        <% 
+          const startPage = Math.max(1, currentPage - 2);
+          const endPage = Math.min(totalPages, startPage + 4);
+    
+          for (let i = startPage; i <= endPage; i++) { 
+        %>
+          <a href="/search?query=<%= query %>&description=<%= description %>&page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+    
+        <% if (currentPage < totalPages) { %>
+          <a href="/search?query=<%= query %>&description=<%= description %>&page=<%= currentPage + 1 %>">Next</a>
+        <% } %>
+      </div>
     <% } else { %>
       <p>No repositories found. Try a different description.</p>
     <% } %>
