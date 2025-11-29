@@ -12,7 +12,16 @@ router.get("/readme/:owner/:repo", async (req, res) => {
         'Accept': 'application/vnd.github.v3.raw'
       }
     });
-    res.send(readmeResponse.data);
+    const readmeContent = readmeResponse.data;
+    const words = readmeContent.split(/\s+/);
+    const maxWords = 200;
+
+    if (words.length > maxWords) {
+      const truncatedContent = words.slice(0, maxWords).join(' ') + '...';
+      res.send(truncatedContent);
+    } else {
+      res.send(readmeContent);
+    }
   } catch (error) {
     res.status(404).send("README not found.");
   }
