@@ -14,7 +14,12 @@
 <body>
   <div id="bg"></div>
   <div class="container results-container">
-    <h1>Results</h1>
+    <div class="search-header">
+      <form action="/search" id="form" class="form" method="GET">
+        <input type="text" id="query" name="query" placeholder="What open-source project are you looking for?" required value="<%= query %>">
+        <button type="submit" class="form-submit">Search</button>
+      </form>
+    </div>
     <% if (repos && repos.length > 0) { %>
       <div class="results-grid">
         <% repos.forEach((repo, index) => { %>
