@@ -9,23 +9,25 @@ The project is deployed on Vercel and can be accessed here: [https://github-repo
 ## Demo
 
 ### Search Query
+
 ![Search Query](./demo/search%20query.png)
 
 ### Result
+
 ![Result](./demo/result.png)
 
 ## Features
 
-*   **Natural Language Search:** Search for repositories using natural language queries.
-*   **Filter Results:** Filter repositories by stars, recent activity, and programming language.
-*   **Quick Summaries:** Get quick summaries of repositories to easily find what you're looking for.
+- **Natural Language Search:** Search for repositories using natural language queries.
+- **Filter Results:** Filter repositories by stars, recent activity, and programming language.
+- **Quick Summaries:** Get quick summaries of repositories to easily find what you're looking for.
 
 ## Getting Started
 
 ### Prerequisites
 
-*   Node.js
-*   npm
+- Node.js
+- npm
 
 ### Installation
 
@@ -52,10 +54,10 @@ The application will be available at `http://localhost:3000`.
 
 ## Future Features
 
-*   **Folder Structure:** View the folder structure of a repository.
-*   **Sort by Stars:** Sort repositories by the number of stars.
-*   **Advanced Search:** Implement advanced search filters, such as filtering by license and number of forks.
-*   **User Authentication:** Allow users to log in with their GitHub account to save their favorite repositories.
+- **Folder Structure:** View the folder structure of a repository.
+- **Sort by Stars:** Sort repositories by the number of stars.
+- **Advanced Search:** Implement advanced search filters, such as filtering by license and number of forks.
+- **User Authentication:** Allow users to log in with their GitHub account to save their favorite repositories.
 
 ## Contributing
 
